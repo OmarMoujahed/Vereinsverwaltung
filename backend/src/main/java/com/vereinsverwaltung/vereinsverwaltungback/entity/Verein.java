@@ -27,6 +27,30 @@ public class Verein {
     }
 
     //Getter und Setter
+
+    public Long getVerein_id() {
+        return verein_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
     public void setVerein_id(Long verein_id) {
 
         this.verein_id = verein_id;
