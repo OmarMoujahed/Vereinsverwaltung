@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1">
+
+    <top>
+        <HBox styleClass="bg-subtle" style="-fx-padding: 15 20; -fx-alignment: CENTER_LEFT;">
+            <children>
+                <Label text="Vereinsverwaltung" styleClass="title-3"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Label text="Benutzer" styleClass="text-muted"/>
+            </children>
+        </HBox>
+    </top>
+
+    <!-- SIDEBAR -->
+    <left>
+        <VBox spacing="4.0" style="-fx-padding: 15 10;" styleClass="bg-inset">
+            <children>
+                <Label text="MENÜ" styleClass="text-muted"
+                       style="-fx-font-size: 11px; -fx-padding: 0 0 8 10;"/>
+                <Button maxWidth="Infinity" text="Home" styleClass="button-outlined"/>
+                <Button maxWidth="Infinity" text="Mitglieder" styleClass="flat"/>
+                <Button maxWidth="Infinity" text="Vereine" styleClass="flat"/>
+                <Button maxWidth="Infinity" text="Gruppen" styleClass="flat"/>
+                <Button maxWidth="Infinity" text="Rollen" styleClass="flat"/>
+                <Button maxWidth="Infinity" text="Veranstaltungen" styleClass="flat"/>
+                <Button maxWidth="Infinity" text="Beiträge" styleClass="flat"/>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="15.0" style="-fx-padding: 25;">
+            <children>
+
+                <Label text="Willkommen zurück!" styleClass="title-2"/>
+
+                <HBox spacing="15.0">
+                    <children>
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="card"
+                              style="-fx-padding: 25; -fx-pref-width: 180; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <Label text="42" styleClass="title-1"/>
+                            <Label text="Mitglieder" styleClass="text-muted"/>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="card"
+                              style="-fx-padding: 25; -fx-pref-width: 180; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <Label text="7" styleClass="title-1"/>
+                            <Label text="Vereine" styleClass="text-muted"/>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="card"
+                              style="-fx-padding: 25; -fx-pref-width: 180; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <Label text="3" styleClass="title-1"/>
+                            <Label text="Veranstaltungen" styleClass="text-muted"/>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <VBox spacing="8.0" styleClass="card"
+                      style="-fx-padding: 20; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <children>
+                        <Label text="Nächste Veranstaltungen" styleClass="title-4"/>
+                        <Separator/>
+                        <Label text="• Weihnachtsfeier                    24.12.2026" styleClass="text-subtle"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="8.0" styleClass="card"
+                      style="-fx-padding: 20; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <children>
+                        <Label text="Zuletzt hinzugefügte Mitglieder" styleClass="title-4"/>
+                        <Separator/>
+                        <Label text="• Omar Moujahed         FC Bayern" styleClass="text-subtle"/>
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>
