@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1">
+
+    <top>
+        <HBox style="-fx-padding: 13 20; -fx-alignment: CENTER_LEFT; -fx-border-color: -color-border-default; -fx-border-width: 0 0 1 0;">
+            <Label text="Vereinsverwaltung" styleClass="title-3"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Label text="Omar Moujahed" styleClass="text-muted"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox style="-fx-padding: 18 8; -fx-pref-width: 185; -fx-border-color: -color-border-default; -fx-border-width: 0 1 0 0;" spacing="1">
+            <Label text="MENÜ" styleClass="text-muted" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 0 0 12 10;"/>
+            <Button maxWidth="Infinity" text="Home" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Mitglieder" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Vereine" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Gruppen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Rollen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Veranstaltungen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Beiträge" styleClass="accent" style="-fx-alignment: CENTER_LEFT;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="18" style="-fx-padding: 28;">
+
+            <HBox style="-fx-alignment: CENTER_LEFT;">
+                <VBox spacing="2">
+                    <Label text="Beiträge" styleClass="title-2"/>
+                    <Label text="Mitgliedsbeiträge verwalten" styleClass="text-muted"/>
+                </VBox>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button text="Neuer Beitrag" styleClass="accent"/>
+            </HBox>
+
+            <Separator/>
+
+            <HBox spacing="14">
+                <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
+                    <Label text="14.320 €" styleClass="title-1"/>
+                    <Label text="Gesamt 2024" styleClass="text-muted"/>
+                </VBox>
+                <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
+                    <Label text="11.060 €" styleClass="title-1" style="-fx-text-fill: -color-success-fg;"/>
+                    <Label text="Eingegangen" styleClass="text-muted"/>
+                </VBox>
+                <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
+                    <Label text="3.260 €" styleClass="title-1" style="-fx-text-fill: -color-warning-fg;"/>
+                    <Label text="Noch offen" styleClass="text-muted"/>
+                </VBox>
+            </HBox>
+
+            <HBox spacing="10" style="-fx-alignment: CENTER_LEFT;">
+                <TextField promptText="Name oder Mitgliedsnummer..." style="-fx-pref-width: 255;"/>
+                <ComboBox promptText="Verein" style="-fx-pref-width: 170;"/>
+                <ComboBox promptText="Zahlungsstatus" style="-fx-pref-width: 170;"/>
+            </HBox>
+
+            <TableView VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="Name" prefWidth="240"/>
+                    <TableColumn text="Verein" prefWidth="210"/>
+                    <TableColumn text="Betrag" prefWidth="140"/>
+                    <TableColumn text="Zahlungsstatus" prefWidth="160"/>
+                    <TableColumn text="" prefWidth="90"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>

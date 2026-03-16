@@ -13,77 +13,77 @@
             xmlns:fx="http://javafx.com/fxml/1">
 
     <top>
-        <HBox styleClass="bg-subtle" style="-fx-padding: 15 20; -fx-alignment: CENTER_LEFT;">
-            <children>
-                <Label text="Vereinsverwaltung" styleClass="title-3"/>
-                <Pane HBox.hgrow="ALWAYS"/>
-                <Label text="Benutzer" styleClass="text-muted"/>
-            </children>
+        <HBox style="-fx-padding: 13 20; -fx-alignment: CENTER_LEFT; -fx-border-color: -color-border-default; -fx-border-width: 0 0 1 0;">
+            <Label text="Vereinsverwaltung" styleClass="title-3"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Label text="Omar Moujahed" styleClass="text-muted"/>
         </HBox>
     </top>
 
-    <!-- SIDEBAR -->
     <left>
-        <VBox spacing="4.0" style="-fx-padding: 15 10;" styleClass="bg-inset">
-            <children>
-                <Label text="MENÜ" styleClass="text-muted"
-                       style="-fx-font-size: 11px; -fx-padding: 0 0 8 10;"/>
-                <Button maxWidth="Infinity" text="Home" styleClass="button-outlined"/>
-                <Button maxWidth="Infinity" text="Mitglieder" styleClass="flat"/>
-                <Button maxWidth="Infinity" text="Vereine" styleClass="flat"/>
-                <Button maxWidth="Infinity" text="Gruppen" styleClass="flat"/>
-                <Button maxWidth="Infinity" text="Rollen" styleClass="flat"/>
-                <Button maxWidth="Infinity" text="Veranstaltungen" styleClass="flat"/>
-                <Button maxWidth="Infinity" text="Beiträge" styleClass="flat"/>
-            </children>
+        <VBox style="-fx-padding: 18 8; -fx-pref-width: 185; -fx-border-color: -color-border-default; -fx-border-width: 0 1 0 0;" spacing="1">
+            <Label text="MENÜ" styleClass="text-muted" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 0 0 12 10;"/>
+            <Button maxWidth="Infinity" text="Home" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Mitglieder" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Vereine" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Gruppen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Rollen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Veranstaltungen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Beiträge" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
         </VBox>
     </left>
 
     <center>
-        <VBox spacing="15.0" style="-fx-padding: 25;">
-            <children>
+        <VBox spacing="20" style="-fx-padding: 28;">
 
-                <Label text="Willkommen zurück!" styleClass="title-2"/>
+            <VBox spacing="2">
+                <Label text="Guten Morgen, Omar" styleClass="title-2"/>
+                <Label text="Hier ist eine Übersicht für heute" styleClass="text-muted"/>
+            </VBox>
 
-                <HBox spacing="15.0">
-                    <children>
-                        <VBox alignment="CENTER" spacing="8.0" styleClass="card"
-                              style="-fx-padding: 25; -fx-pref-width: 180; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
-                            <Label text="42" styleClass="title-1"/>
-                            <Label text="Mitglieder" styleClass="text-muted"/>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="8.0" styleClass="card"
-                              style="-fx-padding: 25; -fx-pref-width: 180; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
-                            <Label text="7" styleClass="title-1"/>
-                            <Label text="Vereine" styleClass="text-muted"/>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="8.0" styleClass="card"
-                              style="-fx-padding: 25; -fx-pref-width: 180; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
-                            <Label text="3" styleClass="title-1"/>
-                            <Label text="Veranstaltungen" styleClass="text-muted"/>
-                        </VBox>
-                    </children>
-                </HBox>
+            <HBox spacing="14">
+                <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 165;">
+                    <Label text="42" styleClass="title-1"/>
+                    <Label text="Mitglieder" styleClass="text-muted"/>
+                </VBox>
+                <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 165;">
+                    <Label text="7" styleClass="title-1"/>
+                    <Label text="Vereine" styleClass="text-muted"/>
+                </VBox>
+                <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 165;">
+                    <Label text="3" styleClass="title-1"/>
+                    <Label text="Veranstaltungen" styleClass="text-muted"/>
+                </VBox>
+            </HBox>
 
-                <VBox spacing="8.0" styleClass="card"
-                      style="-fx-padding: 20; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
-                    <children>
-                        <Label text="Nächste Veranstaltungen" styleClass="title-4"/>
-                        <Separator/>
-                        <Label text="• Weihnachtsfeier                    24.12.2026" styleClass="text-subtle"/>
-                    </children>
+            <HBox spacing="14">
+                <VBox spacing="10" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 360;">
+                    <Label text="Nächste Veranstaltungen" styleClass="title-4"/>
+                    <Separator/>
+                    <HBox style="-fx-alignment: CENTER_LEFT;">
+                        <VBox spacing="2">
+                            <Label text="Weihnachtsfeier"/>
+                            <Label text="FC Bayern München" styleClass="text-muted"/>
+                        </VBox>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Label text="24.12.2026" styleClass="text-muted"/>
+                    </HBox>
                 </VBox>
 
-                <VBox spacing="8.0" styleClass="card"
-                      style="-fx-padding: 20; -fx-border-color: #333344; -fx-border-radius: 8; -fx-background-radius: 8;">
-                    <children>
-                        <Label text="Zuletzt hinzugefügte Mitglieder" styleClass="title-4"/>
-                        <Separator/>
-                        <Label text="• Omar Moujahed         FC Bayern" styleClass="text-subtle"/>
-                    </children>
+                <VBox spacing="10" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 360;">
+                    <Label text="Zuletzt hinzugefügt" styleClass="title-4"/>
+                    <Separator/>
+                    <HBox style="-fx-alignment: CENTER_LEFT;">
+                        <VBox spacing="2">
+                            <Label text="Omar Moujahed"/>
+                            <Label text="FC Bayern München" styleClass="text-muted"/>
+                        </VBox>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Label text="vor 2 Tagen" styleClass="text-muted"/>
+                    </HBox>
                 </VBox>
+            </HBox>
 
-            </children>
         </VBox>
     </center>
 
