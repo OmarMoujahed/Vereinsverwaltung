@@ -14,7 +14,8 @@
 
 <BorderPane prefHeight="800.0" prefWidth="1200.0"
             xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1">
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.vereinsverwaltung.frontend.controller.RollenController">
 
     <top>
         <HBox style="-fx-padding: 13 20; -fx-alignment: CENTER_LEFT; -fx-border-color: -color-border-default; -fx-border-width: 0 0 1 0;">
@@ -27,19 +28,18 @@
     <left>
         <VBox style="-fx-padding: 18 8; -fx-pref-width: 185; -fx-border-color: -color-border-default; -fx-border-width: 0 1 0 0;" spacing="1">
             <Label text="MENÜ" styleClass="text-muted" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 0 0 12 10;"/>
-            <Button maxWidth="Infinity" text="Home" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
-            <Button maxWidth="Infinity" text="Mitglieder" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
-            <Button maxWidth="Infinity" text="Vereine" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
-            <Button maxWidth="Infinity" text="Gruppen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
-            <Button maxWidth="Infinity" text="Rollen" styleClass="accent" style="-fx-alignment: CENTER_LEFT;"/>
-            <Button maxWidth="Infinity" text="Veranstaltungen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
-            <Button maxWidth="Infinity" text="Beiträge" styleClass="flat" style="-fx-alignment: CENTER_LEFT;"/>
+            <Button maxWidth="Infinity" text="Home" styleClass="flat" style="-fx-alignment: CENTER_LEFT;" onAction="#zuHome"/>
+            <Button maxWidth="Infinity" text="Mitglieder" styleClass="flat" style="-fx-alignment: CENTER_LEFT;" onAction="#zuMitglieder"/>
+            <Button maxWidth="Infinity" text="Vereine" styleClass="flat" style="-fx-alignment: CENTER_LEFT;" onAction="#zuVereine"/>
+            <Button maxWidth="Infinity" text="Gruppen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;" onAction="#zuGruppen"/>
+            <Button maxWidth="Infinity" text="Rollen" styleClass="accent" style="-fx-alignment: CENTER_LEFT;" onAction="#zuRollen"/>
+            <Button maxWidth="Infinity" text="Veranstaltungen" styleClass="flat" style="-fx-alignment: CENTER_LEFT;" onAction="#zuVeranstaltungen"/>
+            <Button maxWidth="Infinity" text="Beiträge" styleClass="flat" style="-fx-alignment: CENTER_LEFT;" onAction="#zuBeitraege"/>
         </VBox>
     </left>
 
     <center>
         <VBox spacing="18" style="-fx-padding: 28;">
-
             <HBox style="-fx-alignment: CENTER_LEFT;">
                 <VBox spacing="2">
                     <Label text="Rollen" styleClass="title-2"/>
@@ -48,14 +48,11 @@
                 <Pane HBox.hgrow="ALWAYS"/>
                 <Button text="Neue Rolle" styleClass="accent"/>
             </HBox>
-
             <Separator/>
-
             <HBox spacing="10" style="-fx-alignment: CENTER_LEFT;">
                 <TextField promptText="Rollenname..." style="-fx-pref-width: 260;"/>
                 <ComboBox promptText="Verein" style="-fx-pref-width: 190;"/>
             </HBox>
-
             <TableView VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn text="Rollenname" prefWidth="290"/>
@@ -64,7 +61,6 @@
                     <TableColumn text="" prefWidth="90"/>
                 </columns>
             </TableView>
-
         </VBox>
     </center>
 
