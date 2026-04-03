@@ -48,13 +48,17 @@
                 <Button text="Neuer Verein" styleClass="accent"/>
             </HBox>
             <Separator/>
-            <TextField promptText="Name oder Sportart..." style="-fx-pref-width: 280;"/>
-            <TableView VBox.vgrow="ALWAYS">
+            <TextField fx:id="sucheField" promptText="Name oder Sportart..." style="-fx-pref-width: 280;"/>
+            <TableView fx:id="vereineTabelle" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn text="Name" prefWidth="295"/>
-                    <TableColumn text="Sportart" prefWidth="195"/>
-                    <TableColumn text="Mitglieder" prefWidth="145"/>
-                    <TableColumn text="" prefWidth="90"/>
+                    <TableColumn fx:id="idColumn" text="Nr." prefWidth="60"/>
+                    <TableColumn fx:id="nameColumn" text="Name" prefWidth="200"/>
+                    <TableColumn fx:id="beschreibungColumn" text="Beschreibung" prefWidth="220"/>
+                    <TableColumn fx:id="mitgliederColumn" text="Mitglieder" prefWidth="100"/>
+                    <TableColumn fx:id="emailColumn" text="Email" prefWidth="180"/>
+                    <TableColumn fx:id="telefonColumn" text="Telefon" prefWidth="130"/>
+                    <TableColumn fx:id="adresseColumn" text="Adresse" prefWidth="180"/>
+                    <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>
         </VBox>

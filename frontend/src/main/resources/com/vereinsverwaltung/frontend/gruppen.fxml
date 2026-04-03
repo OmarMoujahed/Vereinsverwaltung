@@ -50,15 +50,15 @@
             </HBox>
             <Separator/>
             <HBox spacing="10" style="-fx-alignment: CENTER_LEFT;">
-                <TextField promptText="Gruppenname..." style="-fx-pref-width: 260;"/>
-                <ComboBox promptText="Verein" style="-fx-pref-width: 190;"/>
+                <TextField fx:id="sucheField" promptText="Gruppenname..." style="-fx-pref-width: 260;"/>
+                <ComboBox fx:id="vereinFilter" promptText="Verein" style="-fx-pref-width: 190;"/>
             </HBox>
-            <TableView VBox.vgrow="ALWAYS">
+            <TableView fx:id="gruppenTabelle" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn text="Gruppenname" prefWidth="290"/>
-                    <TableColumn text="Verein" prefWidth="290"/>
-                    <TableColumn text="Mitglieder" prefWidth="190"/>
-                    <TableColumn text="" prefWidth="90"/>
+                    <TableColumn fx:id="nameColumn" text="Gruppenname" prefWidth="290"/>
+                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="290"/>
+                    <TableColumn fx:id="mitgliederColumn" text="Mitglieder" prefWidth="190"/>
+                    <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>
         </VBox>

@@ -48,14 +48,21 @@
                 <Button text="Neues Mitglied" styleClass="accent"/>
             </HBox>
             <Separator/>
-            <TextField promptText="Name oder Mitgliedsnummer..." style="-fx-pref-width: 280;"/>
-            <TableView VBox.vgrow="ALWAYS">
+            <TextField fx:id="sucheField" promptText="Name oder Mitgliedsnummer..." style="-fx-pref-width: 280;"/>
+            <TableView fx:id="mitgliederTabelle" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn text="Nachname" prefWidth="195"/>
-                    <TableColumn text="Vorname" prefWidth="195"/>
-                    <TableColumn text="Verein" prefWidth="245"/>
-                    <TableColumn text="Gruppe" prefWidth="195"/>
-                    <TableColumn text="" prefWidth="90"/>
+                    <TableColumn fx:id="idColumn" text="Nr." prefWidth="60"/>
+                    <TableColumn fx:id="nachnameColumn" text="Nachname" prefWidth="130"/>
+                    <TableColumn fx:id="vornameColumn" text="Vorname" prefWidth="130"/>
+                    <TableColumn fx:id="emailColumn" text="Email" prefWidth="180"/>
+                    <TableColumn fx:id="telefonColumn" text="Telefon" prefWidth="120"/>
+                    <TableColumn fx:id="adresseColumn" text="Adresse" prefWidth="180"/>
+                    <TableColumn fx:id="geburtsdatumColumn" text="Geburtsdatum" prefWidth="130"/>
+                    <TableColumn fx:id="eintrittsdatumColumn" text="Eintrittsdatum" prefWidth="130"/>
+                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="150"/>
+                    <TableColumn fx:id="gruppeColumn" text="Gruppe" prefWidth="130"/>
+                    <TableColumn fx:id="rolleColumn" text="Rolle" prefWidth="120"/>
+                    <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>
         </VBox>

@@ -51,30 +51,33 @@
             <Separator/>
             <HBox spacing="14">
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
-                    <Label text="14.320 €" styleClass="title-1"/>
+                    <Label fx:id="gesamtLabel" text="14.320 €" styleClass="title-1"/>
                     <Label text="Gesamt 2024" styleClass="text-muted"/>
                 </VBox>
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
-                    <Label text="11.060 €" styleClass="title-1" style="-fx-text-fill: -color-success-fg;"/>
+                    <Label fx:id="eingegangenLabel" text="11.060 €" styleClass="title-1" style="-fx-text-fill: -color-success-fg;"/>
                     <Label text="Eingegangen" styleClass="text-muted"/>
                 </VBox>
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
-                    <Label text="3.260 €" styleClass="title-1" style="-fx-text-fill: -color-warning-fg;"/>
+                    <Label fx:id="offenLabel" text="3.260 €" styleClass="title-1" style="-fx-text-fill: -color-warning-fg;"/>
                     <Label text="Noch offen" styleClass="text-muted"/>
                 </VBox>
             </HBox>
             <HBox spacing="10" style="-fx-alignment: CENTER_LEFT;">
-                <TextField promptText="Name oder Mitgliedsnummer..." style="-fx-pref-width: 255;"/>
-                <ComboBox promptText="Verein" style="-fx-pref-width: 170;"/>
-                <ComboBox promptText="Zahlungsstatus" style="-fx-pref-width: 170;"/>
+                <TextField fx:id="sucheField" promptText="Name oder Mitgliedsnummer..." style="-fx-pref-width: 255;"/>
+                <ComboBox fx:id="vereinFilter" promptText="Verein" style="-fx-pref-width: 170;"/>
+                <ComboBox fx:id="statusFilter" promptText="Zahlungsstatus" style="-fx-pref-width: 170;"/>
             </HBox>
-            <TableView VBox.vgrow="ALWAYS">
+            <TableView fx:id="beitraegeTabelle" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn text="Name" prefWidth="240"/>
-                    <TableColumn text="Verein" prefWidth="210"/>
-                    <TableColumn text="Betrag" prefWidth="140"/>
-                    <TableColumn text="Zahlungsstatus" prefWidth="160"/>
-                    <TableColumn text="" prefWidth="90"/>
+                    <TableColumn fx:id="idColumn" text="Nr." prefWidth="60"/>
+                    <TableColumn fx:id="nameColumn" text="Mitglied" prefWidth="200"/>
+                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="180"/>
+                    <TableColumn fx:id="betragColumn" text="Betrag" prefWidth="100"/>
+                    <TableColumn fx:id="zeitraumColumn" text="Zeitraum" prefWidth="120"/>
+                    <TableColumn fx:id="faelligkeitColumn" text="Fälligkeitsdatum" prefWidth="140"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="120"/>
+                    <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>
         </VBox>
