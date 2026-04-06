@@ -45,10 +45,10 @@
                     <Label text="Alle registrierten Vereine" styleClass="text-muted"/>
                 </VBox>
                 <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="Neuer Verein" styleClass="accent"/>
+                <Button text="Neuer Verein" styleClass="accent" onAction="#vereinHinzufuegen"/>
             </HBox>
             <Separator/>
-            <TextField fx:id="sucheField" promptText="Name oder Sportart..." style="-fx-pref-width: 280;"/>
+            <TextField fx:id="sucheField" promptText="Name oder Sportart..."/>
             <TableView fx:id="vereineTabelle" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="idColumn" text="Nr." prefWidth="60"/>

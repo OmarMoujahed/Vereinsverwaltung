@@ -2,6 +2,8 @@ package com.vereinsverwaltung.vereinsverwaltungback.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Verein {
     @Id
@@ -15,13 +17,19 @@ public class Verein {
     private String email;
     private String telefon;
     private String adresse;
+    @Column(updatable = false)
+    private LocalDateTime erstelltAm;
 
-    //Konstruktoren
-    public Verein(String newname){
-
-        name = newname;
+    @PrePersist
+    protected void onCreate() {
+        erstelltAm = LocalDateTime.now();
     }
 
+    public LocalDateTime getErstelltAm() {
+        return erstelltAm;
+    }
+
+    //Konstruktor
     public Verein() {
 
     }
