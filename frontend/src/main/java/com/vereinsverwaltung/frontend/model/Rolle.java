@@ -1,12 +1,19 @@
 package com.vereinsverwaltung.frontend.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Rolle {
 
     private Long rolle_id;
     private String name;
     private String beschreibung;
+    @SerializedName("istGlobal")
     private boolean istGlobal;
     private Verein verein;
+    @SerializedName("erstelltAm")
+    private String erstelltAm;
+
+    public String getErstelltAm() { return erstelltAm; }
 
 
     public Long getRolle_id() { return rolle_id; }

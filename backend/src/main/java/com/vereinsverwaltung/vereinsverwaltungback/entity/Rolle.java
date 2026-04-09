@@ -2,6 +2,8 @@ package com.vereinsverwaltung.vereinsverwaltungback.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Rolle {
 
@@ -14,6 +16,18 @@ public class Rolle {
     private String beschreibung;
 
     private boolean istGlobal;
+
+    @Column(updatable = false)
+    private LocalDateTime erstelltAm;
+
+    @PrePersist
+    protected void onCreate() {
+        erstelltAm = LocalDateTime.now();
+    }
+
+    public LocalDateTime getErstelltAm() {
+        return erstelltAm;
+    }
 
     // Beziehung zum Verein
     @ManyToOne

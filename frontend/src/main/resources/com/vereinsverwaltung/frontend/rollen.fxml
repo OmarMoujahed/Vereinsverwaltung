@@ -46,7 +46,7 @@
                     <Label text="Rollen innerhalb der Vereine verwalten" styleClass="text-muted"/>
                 </VBox>
                 <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="Neue Rolle" styleClass="accent"/>
+                <Button text="Neue Rolle" styleClass="accent" onAction="#rolleHinzufuegen"/>
             </HBox>
             <Separator/>
             <HBox spacing="10" style="-fx-alignment: CENTER_LEFT;">
@@ -56,11 +56,11 @@
             <TableView fx:id="rollenTabelle" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="idColumn" text="Nr." prefWidth="60"/>
-                    <TableColumn fx:id="nameColumn" text="Rollenname" prefWidth="290"/>
+                    <TableColumn fx:id="nameColumn" text="Name" prefWidth="200"/>
                     <TableColumn fx:id="beschreibungColumn" text="Beschreibung" prefWidth="220"/>
-                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="290"/>
+                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="180"/>
                     <TableColumn fx:id="istGlobalColumn" text="Global" prefWidth="80"/>
-                    <TableColumn fx:id="mitgliederColumn" text="Mitglieder" prefWidth="190"/>
+                    <TableColumn fx:id="mitgliederColumn" text="Mitglieder" prefWidth="100"/>
                     <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>

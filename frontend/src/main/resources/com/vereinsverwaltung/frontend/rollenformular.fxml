@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="14" style="-fx-padding: 28; -fx-pref-width: 480;"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vereinsverwaltung.frontend.controller.RolleFormularController">
+
+    <Label fx:id="titelLabel" text="Neue Rolle" styleClass="title-2"/>
+    <Separator/>
+
+    <VBox spacing="6">
+        <Label text="Name" styleClass="text-muted"/>
+        <TextField fx:id="nameField" promptText="Rollenname"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Beschreibung" styleClass="text-muted"/>
+        <TextArea fx:id="beschreibungField" promptText="Beschreibung" prefRowCount="3"/>
+    </VBox>
+
+    <CheckBox fx:id="istGlobalCheck" text="Globale Rolle"/>
+
+    <VBox spacing="6">
+        <Label text="Verein" styleClass="text-muted"/>
+        <ComboBox fx:id="vereinCombo" maxWidth="Infinity"/>
+    </VBox>
+
+    <Separator/>
+
+    <HBox spacing="10" style="-fx-alignment: CENTER_RIGHT;">
+        <Button text="Abbrechen" styleClass="flat" onAction="#abbrechen"/>
+        <Button text="Speichern" styleClass="accent" onAction="#speichern"/>
+    </HBox>
+
+</VBox>
