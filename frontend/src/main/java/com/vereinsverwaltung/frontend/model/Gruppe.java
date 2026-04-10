@@ -1,11 +1,17 @@
 package com.vereinsverwaltung.frontend.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Gruppe {
 
     private Long gruppe_id;
     private String name;
     private String beschreibung;
     private Verein verein;
+    @SerializedName("erstelltAm")
+    private String erstelltAm;
+
+    public String getErstelltAm() { return erstelltAm; }
 
     // Getter und Setter
     public Long getGruppe_id() { return gruppe_id; }

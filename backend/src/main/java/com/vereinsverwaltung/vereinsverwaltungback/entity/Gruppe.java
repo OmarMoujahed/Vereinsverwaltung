@@ -3,6 +3,8 @@ package com.vereinsverwaltung.vereinsverwaltungback.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Gruppe {
 
@@ -19,6 +21,18 @@ public class Gruppe {
     @ManyToOne
     @JoinColumn(name = "verein_id")
     private Verein verein;
+
+    @Column(updatable = false)
+    private LocalDateTime erstelltAm;
+
+    @PrePersist
+    protected void onCreate() {
+        erstelltAm = LocalDateTime.now();
+    }
+
+    public LocalDateTime getErstelltAm() {
+        return erstelltAm;
+    }
 
 
     //Getter und Setter

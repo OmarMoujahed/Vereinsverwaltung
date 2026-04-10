@@ -46,7 +46,7 @@
                     <Label text="Gruppen innerhalb der Vereine verwalten" styleClass="text-muted"/>
                 </VBox>
                 <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="Neue Gruppe" styleClass="accent"/>
+                <Button text="Neue Gruppe" styleClass="accent" onAction="#gruppeHinzufuegen"/>
             </HBox>
             <Separator/>
             <HBox spacing="10" style="-fx-alignment: CENTER_LEFT;">
