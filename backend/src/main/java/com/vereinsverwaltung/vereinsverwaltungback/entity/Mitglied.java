@@ -3,6 +3,7 @@ package com.vereinsverwaltung.vereinsverwaltungback.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,6 @@ public class Mitglied {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mitglied_id;
-
     private String vorname;
     private String nachname;
     private String email;
@@ -21,6 +21,17 @@ public class Mitglied {
     private LocalDate eintrittsdatum;
     private String adresse;
 
+    @Column(updatable = false)
+    private LocalDateTime erstelltAm;
+
+    @PrePersist
+    protected void onCreate() {
+        erstelltAm = LocalDateTime.now();
+    }
+
+    public LocalDateTime getErstelltAm() {
+        return erstelltAm;
+    }
     // Beziehungen
     @ManyToOne
     @JoinColumn(name = "verein_id")
@@ -29,6 +40,22 @@ public class Mitglied {
     @ManyToOne
     @JoinColumn(name = "rolle_id")
     private Rolle rolle;
+
+    public void setMitglied_id(Long mitglied_id) {
+        this.mitglied_id = mitglied_id;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public void setErstelltAm(LocalDateTime erstelltAm) {
+        this.erstelltAm = erstelltAm;
+    }
 
     @ManyToMany
     @JoinTable(
@@ -45,25 +72,12 @@ public class Mitglied {
         return mitglied_id;
     }
 
-    public void setMitglied_id(Long mitglied_id) {
-        this.mitglied_id = mitglied_id;
-    }
-
     public String getVorname() {
         return vorname;
     }
 
-    public void setVorname(String vorname) {
-
-        this.vorname = vorname;
-    }
-
     public String getNachname() {
         return nachname;
-    }
-
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
     }
 
     public Verein getVerein() {

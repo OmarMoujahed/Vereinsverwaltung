@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.ListView?>
+<VBox spacing="14" style="-fx-padding: 28; -fx-pref-width: 480;"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vereinsverwaltung.frontend.controller.MitgliedFormularController">
+
+    <Label fx:id="titelLabel" text="Neues Mitglied" styleClass="title-2"/>
+    <Separator/>
+
+    <HBox spacing="14">
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="Vorname" styleClass="text-muted"/>
+            <TextField fx:id="vornameField" promptText="Vorname"/>
+        </VBox>
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="Nachname" styleClass="text-muted"/>
+            <TextField fx:id="nachnameField" promptText="Nachname"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="6">
+        <Label text="Email" styleClass="text-muted"/>
+        <TextField fx:id="emailField" promptText="Email"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Telefon" styleClass="text-muted"/>
+        <TextField fx:id="telefonField" promptText="Telefon"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Adresse" styleClass="text-muted"/>
+        <TextField fx:id="adresseField" promptText="Adresse"/>
+    </VBox>
+
+    <HBox spacing="14">
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="Geburtsdatum" styleClass="text-muted"/>
+            <DatePicker fx:id="geburtsdatumPicker"/>
+        </VBox>
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="Eintrittsdatum" styleClass="text-muted"/>
+            <DatePicker fx:id="eintrittsdatumPicker"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="6">
+        <Label text="Verein" styleClass="text-muted"/>
+        <ComboBox fx:id="vereinCombo" maxWidth="Infinity"/>
+    </VBox>
+    <VBox spacing="6">
+        <Label text="Gruppen" styleClass="text-muted"/>
+        <ComboBox fx:id="gruppenCombo" maxWidth="Infinity"/>
+        <Button text="Gruppe hinzufügen" styleClass="flat" onAction="#gruppeHinzufuegen"/>
+        <ListView fx:id="gruppenListe" prefHeight="100"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Rolle" styleClass="text-muted"/>
+        <ComboBox fx:id="rolleCombo" maxWidth="Infinity"/>
+    </VBox>
+
+    <Separator/>
+
+    <HBox spacing="10" style="-fx-alignment: CENTER_RIGHT;">
+        <Button text="Abbrechen" styleClass="flat" onAction="#abbrechen"/>
+        <Button text="Speichern" styleClass="accent" onAction="#speichern"/>
+    </HBox>
+
+</VBox>

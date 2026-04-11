@@ -76,6 +76,12 @@ public class MitgliedService {
         Mitglied mitglied = mitgliedRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Mitglied nicht gefunden!"));
 
+        if (neueDaten.getVerein() != null) {
+            Verein neuerVerein = vereinRepository.findById(neueDaten.getVerein().getVerein_id())
+                    .orElseThrow(() -> new IllegalArgumentException("Verein nicht gefunden!"));
+            mitglied.setVerein(neuerVerein);
+        }
+
         if (neueDaten.getRolle() != null &&
                 !neueDaten.getRolle().getRolle_id().equals(mitglied.getRolle().getRolle_id())) {
 

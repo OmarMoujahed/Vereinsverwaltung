@@ -1,5 +1,7 @@
 package com.vereinsverwaltung.frontend.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,10 @@ public class Mitglied {
     private Verein verein;
     private Rolle rolle;
     private List<Gruppe> gruppen = new ArrayList<>();
+    @SerializedName("erstelltAm")
+    private String erstelltAm;
+
+    public String getErstelltAm() { return erstelltAm; }
 
     // Getter und Setter
     public Long getMitglied_id() { return mitglied_id; }

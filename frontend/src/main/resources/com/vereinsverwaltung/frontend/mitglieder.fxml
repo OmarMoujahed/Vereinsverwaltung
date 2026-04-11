@@ -45,7 +45,7 @@
                     <Label text="Alle Mitglieder der Vereine" styleClass="text-muted"/>
                 </VBox>
                 <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="Neues Mitglied" styleClass="accent"/>
+                <Button text="Neues Mitglied" styleClass="accent" onAction="#mitgliedHinzufuegen"/>
             </HBox>
             <Separator/>
             <TextField fx:id="sucheField" promptText="Name oder Mitgliedsnummer..." style="-fx-pref-width: 280;"/>
