@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="14" style="-fx-padding: 28; -fx-pref-width: 480;"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vereinsverwaltung.frontend.controller.VeranstaltungFormularController">
+
+    <Label fx:id="titelLabel" text="Neue Veranstaltung" styleClass="title-2"/>
+    <Separator/>
+
+    <VBox spacing="6">
+        <Label text="Name" styleClass="text-muted"/>
+        <TextField fx:id="nameField" promptText="Veranstaltungsname"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Datum" styleClass="text-muted"/>
+        <DatePicker fx:id="datumPicker"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Ort" styleClass="text-muted"/>
+        <TextField fx:id="ortField" promptText="Ort"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Beschreibung" styleClass="text-muted"/>
+        <TextArea fx:id="beschreibungField" promptText="Beschreibung" prefRowCount="3"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Verein" styleClass="text-muted"/>
+        <ComboBox fx:id="vereinCombo" maxWidth="Infinity"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Gruppe" styleClass="text-muted"/>
+        <ComboBox fx:id="gruppeCombo" maxWidth="Infinity"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Status" styleClass="text-muted"/>
+        <ComboBox fx:id="statusCombo" maxWidth="Infinity"/>
+    </VBox>
+
+    <Separator/>
+
+    <HBox spacing="10" style="-fx-alignment: CENTER_RIGHT;">
+        <Button text="Abbrechen" styleClass="flat" onAction="#abbrechen"/>
+        <Button text="Speichern" styleClass="accent" onAction="#speichern"/>
+    </HBox>
+
+</VBox>

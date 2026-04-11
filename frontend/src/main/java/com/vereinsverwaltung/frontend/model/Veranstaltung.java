@@ -1,5 +1,7 @@
 package com.vereinsverwaltung.frontend.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.time.LocalDate;
 
 public class Veranstaltung {
@@ -10,7 +12,12 @@ public class Veranstaltung {
     private String ort;
     private String beschreibung;
     private Verein verein;
+    private VeranstaltungStatus status;
     private Gruppe gruppe;
+    @SerializedName("erstelltAm")
+    private String erstelltAm;
+
+    public String getErstelltAm() { return erstelltAm; }
 
     // Getter
     public Long getId() { return id; }
@@ -28,4 +35,15 @@ public class Veranstaltung {
     public void setBeschreibung(String beschreibung) { this.beschreibung = beschreibung; }
     public void setVerein(Verein verein) { this.verein = verein; }
     public void setGruppe(Gruppe gruppe) { this.gruppe = gruppe; }
+    public VeranstaltungStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(VeranstaltungStatus status) {
+        this.status = status;
+    }
+
+    public void setErstelltAm(String erstelltAm) {
+        this.erstelltAm = erstelltAm;
+    }
 }

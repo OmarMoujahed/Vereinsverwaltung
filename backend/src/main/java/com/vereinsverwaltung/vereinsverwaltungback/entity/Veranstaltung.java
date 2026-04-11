@@ -3,6 +3,7 @@ package com.vereinsverwaltung.vereinsverwaltungback.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Veranstaltung {
@@ -16,6 +17,21 @@ public class Veranstaltung {
     private String ort;
     private String beschreibung;
 
+    @Enumerated(EnumType.STRING)
+    private VeranstaltungStatus status;
+
+    @Column(updatable = false)
+    private LocalDateTime erstelltAm;
+
+    @PrePersist
+    protected void onCreate() {
+        erstelltAm = LocalDateTime.now();
+    }
+
+    public LocalDateTime getErstelltAm() {
+        return erstelltAm;
+    }
+
     // Beziehungen
     @ManyToOne
     @JoinColumn(name = "verein_id")
@@ -27,6 +43,18 @@ public class Veranstaltung {
 
 
     //Getter und Setter
+    public VeranstaltungStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(VeranstaltungStatus status) {
+        this.status = status;
+    }
+
+    public void setErstelltAm(LocalDateTime erstelltAm) {
+        this.erstelltAm = erstelltAm;
+    }
+
     public Long getId() {
         return id;
     }

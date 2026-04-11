@@ -46,7 +46,7 @@
                     <Label text="Termine und Events der Vereine" styleClass="text-muted"/>
                 </VBox>
                 <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="Neue Veranstaltung" styleClass="accent"/>
+                <Button text="Neue Veranstaltung" styleClass="accent" onAction="#veranstaltungHinzufuegen"/>
             </HBox>
             <Separator/>
             <HBox spacing="10" style="-fx-alignment: CENTER_LEFT;">

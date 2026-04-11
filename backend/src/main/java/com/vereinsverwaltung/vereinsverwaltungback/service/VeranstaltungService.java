@@ -74,16 +74,17 @@ public class VeranstaltungService {
         Veranstaltung veranstaltung = veranstaltungRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Veranstaltung nicht gefunden!"));
 
+        if (neueDaten.getVerein() != null) {
+            Verein neuerVerein = vereinRepository.findById(neueDaten.getVerein().getVerein_id())
+                    .orElseThrow(() -> new IllegalArgumentException("Verein nicht gefunden!"));
+            veranstaltung.setVerein(neuerVerein);
+        }
+
         if (neueDaten.getGruppe() == null) {
             veranstaltung.setGruppe(null);
         } else {
             Gruppe neueGruppe = gruppeRepository.findById(neueDaten.getGruppe().getGruppe_id())
                     .orElseThrow(() -> new IllegalArgumentException("Gruppe nicht gefunden!"));
-
-            if (!neueGruppe.getVerein().getVerein_id().equals(veranstaltung.getVerein().getVerein_id())) {
-                throw new IllegalArgumentException("Die Gruppe gehört nicht zum selben Verein!");
-            }
-
             veranstaltung.setGruppe(neueGruppe);
         }
 
@@ -91,6 +92,7 @@ public class VeranstaltungService {
         veranstaltung.setBeschreibung(neueDaten.getBeschreibung());
         veranstaltung.setDatum(neueDaten.getDatum());
         veranstaltung.setOrt(neueDaten.getOrt());
+        veranstaltung.setStatus(neueDaten.getStatus());
 
         return veranstaltungRepository.save(veranstaltung);
     }
