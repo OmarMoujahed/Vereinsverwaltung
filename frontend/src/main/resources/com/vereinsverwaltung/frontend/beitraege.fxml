@@ -46,20 +46,20 @@
                     <Label text="Mitgliedsbeiträge verwalten" styleClass="text-muted"/>
                 </VBox>
                 <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="Neuer Beitrag" styleClass="accent"/>
+                <Button text="Neuer Beitrag" styleClass="accent" onAction="#beitragHinzufuegen"/>
             </HBox>
             <Separator/>
             <HBox spacing="14">
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
-                    <Label fx:id="gesamtLabel" text="14.320 €" styleClass="title-1"/>
+                    <Label fx:id="gesamtLabel" text="..." styleClass="title-1"/>
                     <Label text="Gesamt 2024" styleClass="text-muted"/>
                 </VBox>
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
-                    <Label fx:id="eingegangenLabel" text="11.060 €" styleClass="title-1" style="-fx-text-fill: -color-success-fg;"/>
+                    <Label fx:id="eingegangenLabel" text="..." styleClass="title-1" style="-fx-text-fill: -color-success-fg;"/>
                     <Label text="Eingegangen" styleClass="text-muted"/>
                 </VBox>
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 175;">
-                    <Label fx:id="offenLabel" text="3.260 €" styleClass="title-1" style="-fx-text-fill: -color-warning-fg;"/>
+                    <Label fx:id="offenLabel" text="..." styleClass="title-1" style="-fx-text-fill: -color-warning-fg;"/>
                     <Label text="Noch offen" styleClass="text-muted"/>
                 </VBox>
             </HBox>
