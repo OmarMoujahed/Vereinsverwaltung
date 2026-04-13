@@ -42,15 +42,15 @@
             </VBox>
             <HBox spacing="14">
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 165;">
-                    <Label fx:id="anzahlMitglieder" text="42" styleClass="title-1"/>
+                    <Label fx:id="anzahlMitglieder" text="..." styleClass="title-1"/>
                     <Label text="Mitglieder" styleClass="text-muted"/>
                 </VBox>
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 165;">
-                    <Label fx:id="anzahlVereine" text="7" styleClass="title-1"/>
+                    <Label fx:id="anzahlVereine" text="..." styleClass="title-1"/>
                     <Label text="Vereine" styleClass="text-muted"/>
                 </VBox>
                 <VBox spacing="5" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 165;">
-                    <Label fx:id="anzahlVeranstaltungen" text="3" styleClass="title-1"/>
+                    <Label fx:id="anzahlVeranstaltungen" text="..." styleClass="title-1"/>
                     <Label text="Veranstaltungen" styleClass="text-muted"/>
                 </VBox>
             </HBox>
@@ -58,26 +58,12 @@
                 <VBox spacing="10" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 360;">
                     <Label text="Nächste Veranstaltungen" styleClass="title-4"/>
                     <Separator/>
-                    <HBox style="-fx-alignment: CENTER_LEFT;">
-                        <VBox spacing="2">
-                            <Label text="Weihnachtsfeier"/>
-                            <Label text="FC Bayern München" styleClass="text-muted"/>
-                        </VBox>
-                        <Pane HBox.hgrow="ALWAYS"/>
-                        <Label text="24.12.2026" styleClass="text-muted"/>
-                    </HBox>
+                    <VBox fx:id="naechsteVeranstaltungenBox" spacing="10"/>
                 </VBox>
                 <VBox spacing="10" styleClass="card" style="-fx-padding: 18 22; -fx-pref-width: 360;">
                     <Label text="Zuletzt hinzugefügt" styleClass="title-4"/>
                     <Separator/>
-                    <HBox style="-fx-alignment: CENTER_LEFT;">
-                        <VBox spacing="2">
-                            <Label text="Omar Moujahed"/>
-                            <Label text="FC Bayern München" styleClass="text-muted"/>
-                        </VBox>
-                        <Pane HBox.hgrow="ALWAYS"/>
-                        <Label text="vor 2 Tagen" styleClass="text-muted"/>
-                    </HBox>
+                    <VBox fx:id="neuesteMitgliederBox" spacing="10"/>
                 </VBox>
             </HBox>
         </VBox>
