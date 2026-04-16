@@ -9,4 +9,5 @@ module com.vereinsverwaltung.frontend {
     exports com.vereinsverwaltung.frontend.controller to javafx.fxml;
     opens com.vereinsverwaltung.frontend to javafx.fxml;
     opens com.vereinsverwaltung.frontend.controller to javafx.fxml;
+    opens com.vereinsverwaltung.frontend.model to com.google.gson;
 }
