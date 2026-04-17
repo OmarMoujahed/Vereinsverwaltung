@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Mitgliedsbeitrag {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Double betrag;

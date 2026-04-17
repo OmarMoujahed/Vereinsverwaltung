@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Rolle {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long rolle_id;
 
     private String name;

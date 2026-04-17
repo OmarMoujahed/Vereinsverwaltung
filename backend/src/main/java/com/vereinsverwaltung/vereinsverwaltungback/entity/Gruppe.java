@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Gruppe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long gruppe_id;
 
     @Column(nullable = false)
