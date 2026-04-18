@@ -62,7 +62,7 @@ public class BeitraegeController {
         });
 
         betragColumn.setCellValueFactory(c -> new SimpleStringProperty(
-                c.getValue().getBetrag() != null ? c.getValue().getBetrag() + " €" : "-"));
+                c.getValue().getBetrag() != null ? c.getValue().getBetrag().getBetrag() + " €" : "-"));
 
         zeitraumColumn.setCellValueFactory(c -> new SimpleStringProperty(
                 c.getValue().getZeitraum() != null ? c.getValue().getZeitraum() : "-"));
@@ -156,17 +156,17 @@ public class BeitraegeController {
     private void aktualisiereStatistiken(List<Mitgliedsbeitrag> beitraege) {
         double gesamt = beitraege.stream()
                 .filter(b -> b.getBetrag() != null)
-                .mapToDouble(b -> b.getBetrag())
+                .mapToDouble(b -> b.getBetrag().getBetrag())
                 .sum();
 
         double eingegangen = beitraege.stream()
                 .filter(b -> b.getStatus() == BeitragsStatus.BEZAHLT && b.getBetrag() != null)
-                .mapToDouble(b -> b.getBetrag())
+                .mapToDouble(b -> b.getBetrag().getBetrag())
                 .sum();
 
         double offen = beitraege.stream()
                 .filter(b -> b.getStatus() == BeitragsStatus.OFFEN && b.getBetrag() != null)
-                .mapToDouble(b -> b.getBetrag())
+                .mapToDouble(b -> b.getBetrag().getBetrag())
                 .sum();
 
         gesamtLabel.setText(String.format("%.2f €", gesamt));

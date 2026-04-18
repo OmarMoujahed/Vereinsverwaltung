@@ -1,5 +1,6 @@
 package com.vereinsverwaltung.vereinsverwaltungback.entity;
 
+import com.vereinsverwaltung.vereinsverwaltungback.domain.Geldbetrag;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -11,7 +12,8 @@ public class Mitgliedsbeitrag {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Double betrag;
+    @Embedded
+    private Geldbetrag betrag;
     private String zeitraum;
     private LocalDate faelligkeitsdatum;
 
@@ -37,11 +39,11 @@ public class Mitgliedsbeitrag {
         this.id = id;
     }
 
-    public Double getBetrag() {
+    public Geldbetrag getBetrag() {
         return betrag;
     }
 
-    public void setBetrag(Double betrag) {
+    public void setBetrag(Geldbetrag betrag) {
         this.betrag = betrag;
     }
 

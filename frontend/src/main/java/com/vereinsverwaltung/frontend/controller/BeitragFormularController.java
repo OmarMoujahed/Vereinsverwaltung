@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.vereinsverwaltung.frontend.ApiService;
 import com.vereinsverwaltung.frontend.LocalDateAdapter;
 import com.vereinsverwaltung.frontend.model.BeitragsStatus;
+import com.vereinsverwaltung.frontend.model.Geldbetrag;
 import com.vereinsverwaltung.frontend.model.Mitglied;
 import com.vereinsverwaltung.frontend.model.Mitgliedsbeitrag;
 import javafx.collections.FXCollections;
@@ -66,7 +67,7 @@ public class BeitragFormularController {
                     .ifPresent(mitgliedCombo::setValue);
         }
 
-        betragField.setText(beitrag.getBetrag() != null ? beitrag.getBetrag().toString() : "");
+        betragField.setText(beitrag.getBetrag() != null ? String.valueOf(beitrag.getBetrag().getBetrag()) : "");
         zeitraumField.setText(beitrag.getZeitraum() != null ? beitrag.getZeitraum() : "");
         faelligkeitPicker.setValue(beitrag.getFaelligkeitsdatum());
         statusCombo.setValue(beitrag.getStatus());
@@ -93,7 +94,7 @@ public class BeitragFormularController {
 
         Mitgliedsbeitrag beitrag = zuBearbeitenderBeitrag != null ? zuBearbeitenderBeitrag : new Mitgliedsbeitrag();
         beitrag.setMitglied(mitgliedCombo.getValue());
-        beitrag.setBetrag(betrag);
+        beitrag.setBetrag(new Geldbetrag(betrag, "EUR"));
         beitrag.setZeitraum(zeitraumField.getText());
         beitrag.setFaelligkeitsdatum(faelligkeitPicker.getValue());
         beitrag.setStatus(statusCombo.getValue());
