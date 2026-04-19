@@ -62,6 +62,7 @@
                     <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="150"/>
                     <TableColumn fx:id="gruppeColumn" text="Gruppe" prefWidth="130"/>
                     <TableColumn fx:id="rolleColumn" text="Rolle" prefWidth="120"/>
+                    <TableColumn fx:id="beitragStatusColumn" text="Beiträge" prefWidth="110"/>
                     <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>

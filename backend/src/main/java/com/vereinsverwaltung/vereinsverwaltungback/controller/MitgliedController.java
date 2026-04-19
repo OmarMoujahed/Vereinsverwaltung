@@ -1,5 +1,6 @@
 package com.vereinsverwaltung.vereinsverwaltungback.controller;
 
+import com.vereinsverwaltung.vereinsverwaltungback.domain.BeitragsPruefService;
 import com.vereinsverwaltung.vereinsverwaltungback.entity.Mitglied;
 import com.vereinsverwaltung.vereinsverwaltungback.service.MitgliedService;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +13,11 @@ import java.util.List;
 public class MitgliedController {
 
     private final MitgliedService mitgliedService;
+    private final BeitragsPruefService beitragsPruefService;
 
-    public MitgliedController(MitgliedService mitgliedService) {
+    public MitgliedController(MitgliedService mitgliedService, BeitragsPruefService beitragsPruefService) {
         this.mitgliedService = mitgliedService;
+        this.beitragsPruefService = beitragsPruefService;
     }
 
     @GetMapping
@@ -31,6 +34,13 @@ public class MitgliedController {
     public ResponseEntity<Mitglied> mitgliedHolen(@PathVariable Long id) {
         return mitgliedService.mitgliedFinden(id)
                 .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{id}/hat-offene-beitraege")
+    public ResponseEntity<Boolean> hatOffeneBeitraege(@PathVariable Long id) {
+        return mitgliedService.mitgliedFinden(id)
+                .map(m -> ResponseEntity.ok(beitragsPruefService.hatOffeneBeitraege(m)))
                 .orElse(ResponseEntity.notFound().build());
     }
 

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -20,7 +21,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
-import javafx.scene.layout.HBox;
 
 public class MitgliederController {
 
@@ -36,6 +36,7 @@ public class MitgliederController {
     @FXML private TableColumn<Mitglied, String> rolleColumn;
     @FXML private TableColumn<Mitglied, String> vereinColumn;
     @FXML private TableColumn<Mitglied, String> gruppeColumn;
+    @FXML private TableColumn<Mitglied, String> beitragStatusColumn;
     @FXML private TableColumn<Mitglied, String> aktionenColumn;
     @FXML private TextField sucheField;
 
@@ -43,32 +44,31 @@ public class MitgliederController {
 
     @FXML
     public void initialize() {
+        spaltenKonfigurieren();
+        sucheFeldKonfigurieren();
+        datenLaden();
+    }
+
+    private void spaltenKonfigurieren() {
         idColumn.setCellValueFactory(c -> new SimpleStringProperty(
                 c.getValue().getMitglied_id() != null ? c.getValue().getMitglied_id().toString() : "-"));
-
         nachnameColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNachname()));
         vornameColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getVorname()));
-
         emailColumn.setCellValueFactory(c -> new SimpleStringProperty(
                 c.getValue().getEmail() != null ? c.getValue().getEmail() : "-"));
-
         telefonColumn.setCellValueFactory(c -> new SimpleStringProperty(
                 c.getValue().getTelefon() != null ? c.getValue().getTelefon() : "-"));
         adresseColumn.setCellValueFactory(c -> new SimpleStringProperty(
                 c.getValue().getAdresse() != null ? c.getValue().getAdresse() : "-"));
-
         geburtsdatumColumn.setCellValueFactory(c -> new SimpleStringProperty(
                 c.getValue().getGeburtsdatum() != null ? c.getValue().getGeburtsdatum().toString() : "-"));
-
         eintrittsdatumColumn.setCellValueFactory(c -> new SimpleStringProperty(
                 c.getValue().getEintrittsdatum() != null ? c.getValue().getEintrittsdatum().toString() : "-"));
-
         vereinColumn.setCellValueFactory(c -> {
             Mitglied m = c.getValue();
             if (m.getVerein() == null) return new SimpleStringProperty("-");
             return new SimpleStringProperty(m.getVerein().getName());
         });
-
         gruppeColumn.setCellValueFactory(c -> {
             Mitglied m = c.getValue();
             if (m.getGruppen() == null || m.getGruppen().isEmpty()) return new SimpleStringProperty("-");
@@ -77,40 +77,50 @@ public class MitgliederController {
                     .collect(java.util.stream.Collectors.joining(", "));
             return new SimpleStringProperty(gruppen);
         });
-
         rolleColumn.setCellValueFactory(c -> {
             Mitglied m = c.getValue();
             if (m.getRolle() == null) return new SimpleStringProperty("-");
             return new SimpleStringProperty(m.getRolle().getName());
         });
-
+        beitragStatusColumn.setCellValueFactory(c -> {
+            Mitglied m = c.getValue();
+            try {
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create("http://localhost:8080/api/mitglieder/" + m.getMitglied_id() + "/hat-offene-beitraege"))
+                        .GET()
+                        .build();
+                HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+                boolean hatOffen = Boolean.parseBoolean(response.body());
+                return new SimpleStringProperty(hatOffen ? " Offen" : " Bezahlt");
+            } catch (Exception e) {
+                return new SimpleStringProperty("-");
+            }
+        });
         aktionenColumn.setCellFactory(col -> new TableCell<>() {
             private final Button loeschenBtn = new Button("✕");
             private final Button bearbeitenBtn = new Button("✎");
             private final HBox box = new HBox(4, bearbeitenBtn, loeschenBtn);
-
             {
                 bearbeitenBtn.getStyleClass().add("flat");
                 loeschenBtn.getStyleClass().add("flat");
-
                 bearbeitenBtn.setOnAction(e -> {
                     Mitglied m = getTableView().getItems().get(getIndex());
                     mitgliedBearbeiten(m);
                 });
-
                 loeschenBtn.setOnAction(e -> {
                     Mitglied m = getTableView().getItems().get(getIndex());
                     mitgliedLoeschen(m);
                 });
             }
-
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
                 setGraphic(empty ? null : box);
             }
         });
+    }
 
+    private void sucheFeldKonfigurieren() {
         FilteredList<Mitglied> filteredList = new FilteredList<>(mitgliederListe, p -> true);
         sucheField.textProperty().addListener((obs, alt, neu) -> {
             filteredList.setPredicate(m -> {
@@ -122,7 +132,9 @@ public class MitgliederController {
             });
         });
         mitgliederTabelle.setItems(filteredList);
+    }
 
+    private void datenLaden() {
         try {
             List<Mitglied> mitglieder = ApiService.alleMitglieder();
             mitgliederListe.setAll(mitglieder);
@@ -130,33 +142,31 @@ public class MitgliederController {
             System.out.println("Fehler beim Laden der Mitglieder: " + e.getMessage());
         }
     }
+
     @FXML
     private void mitgliedHinzufuegen() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/vereinsverwaltung/frontend/mitgliederformular.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "/com/vereinsverwaltung/frontend/mitgliederformular.fxml"));
         VBox root = loader.load();
-
         Stage stage = new Stage();
         stage.setTitle("Neues Mitglied");
         stage.setScene(new Scene(root));
         stage.showAndWait();
-
         List<Mitglied> mitglieder = ApiService.alleMitglieder();
         mitgliederListe.setAll(mitglieder);
     }
+
     private void mitgliedBearbeiten(Mitglied mitglied) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                     "/com/vereinsverwaltung/frontend/mitgliederformular.fxml"));
             VBox root = loader.load();
-
             MitgliedFormularController controller = loader.getController();
             controller.setMitglied(mitglied);
-
             Stage stage = new Stage();
             stage.setTitle("Mitglied bearbeiten");
             stage.setScene(new Scene(root));
             stage.showAndWait();
-
             List<Mitglied> mitglieder = ApiService.alleMitglieder();
             mitgliederListe.setAll(mitglieder);
         } catch (Exception e) {
@@ -178,7 +188,6 @@ public class MitgliederController {
                             .DELETE()
                             .build();
                     HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
                     List<Mitglied> mitglieder = ApiService.alleMitglieder();
                     mitgliederListe.setAll(mitglieder);
                 } catch (Exception e) {
