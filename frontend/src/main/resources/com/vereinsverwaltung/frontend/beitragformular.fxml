@@ -42,6 +42,11 @@
         <ComboBox fx:id="statusCombo" maxWidth="Infinity"/>
     </VBox>
 
+    <VBox spacing="6">
+        <Label text="Typ" styleClass="text-muted"/>
+        <ComboBox fx:id="typCombo" maxWidth="Infinity"/>
+    </VBox>
+
     <Separator/>
 
     <HBox spacing="10" style="-fx-alignment: CENTER_RIGHT;">

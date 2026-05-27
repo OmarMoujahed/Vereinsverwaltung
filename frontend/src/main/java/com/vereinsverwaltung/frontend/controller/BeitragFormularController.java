@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.vereinsverwaltung.frontend.ApiService;
 import com.vereinsverwaltung.frontend.LocalDateAdapter;
 import com.vereinsverwaltung.frontend.model.BeitragsStatus;
+import com.vereinsverwaltung.frontend.model.BeitragsTyp;
 import com.vereinsverwaltung.frontend.model.Geldbetrag;
 import com.vereinsverwaltung.frontend.model.Mitglied;
 import com.vereinsverwaltung.frontend.model.Mitgliedsbeitrag;
@@ -30,6 +31,7 @@ public class BeitragFormularController {
     @FXML private TextField zeitraumField;
     @FXML private DatePicker faelligkeitPicker;
     @FXML private ComboBox<BeitragsStatus> statusCombo;
+    @FXML private ComboBox<BeitragsTyp> typCombo;
 
     private Mitgliedsbeitrag zuBearbeitenderBeitrag = null;
 
@@ -42,6 +44,9 @@ public class BeitragFormularController {
     public void initialize() {
         statusCombo.setItems(FXCollections.observableArrayList(BeitragsStatus.values()));
 
+        typCombo.setItems(FXCollections.observableArrayList(BeitragsTyp.values()));
+        typCombo.setValue(BeitragsTyp.EINMALIG);
+
         try {
             List<Mitglied> mitglieder = ApiService.alleMitglieder();
             mitgliedCombo.setItems(FXCollections.observableArrayList(mitglieder));
@@ -52,7 +57,6 @@ public class BeitragFormularController {
                 public Mitglied fromString(String s) { return null; }
             });
         } catch (Exception e) {
-            System.out.println("Fehler beim Laden der Mitglieder: " + e.getMessage());
         }
     }
 
@@ -71,6 +75,7 @@ public class BeitragFormularController {
         zeitraumField.setText(beitrag.getZeitraum() != null ? beitrag.getZeitraum() : "");
         faelligkeitPicker.setValue(beitrag.getFaelligkeitsdatum());
         statusCombo.setValue(beitrag.getStatus());
+        typCombo.setValue(beitrag.getTyp() != null ? beitrag.getTyp() : BeitragsTyp.EINMALIG);
     }
 
     @FXML
@@ -98,6 +103,7 @@ public class BeitragFormularController {
         beitrag.setZeitraum(zeitraumField.getText());
         beitrag.setFaelligkeitsdatum(faelligkeitPicker.getValue());
         beitrag.setStatus(statusCombo.getValue());
+        beitrag.setTyp(typCombo.getValue());
 
         try {
             String json = gson.toJson(beitrag);
@@ -120,7 +126,7 @@ public class BeitragFormularController {
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
             fensterSchliessen();
         } catch (Exception e) {
-            System.out.println("Fehler beim Speichern: " + e.getMessage());
+            zeigeWarnung("Fehler beim Speichern: " + e.getMessage());
         }
     }
 

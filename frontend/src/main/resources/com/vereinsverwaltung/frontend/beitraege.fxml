@@ -46,7 +46,10 @@
                     <Label text="Mitgliedsbeiträge verwalten" styleClass="text-muted"/>
                 </VBox>
                 <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="Neuer Beitrag" styleClass="accent" onAction="#beitragHinzufuegen"/>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="Aktualisieren" onAction="#aktualisieren" styleClass="flat" />
+                    <Button text="Neuer Beitrag" onAction="#beitragHinzufuegen" styleClass="accent" />
+                </HBox>
             </HBox>
             <Separator/>
             <HBox spacing="14">
@@ -71,12 +74,13 @@
             <TableView fx:id="beitraegeTabelle" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="idColumn" text="Nr." prefWidth="60"/>
-                    <TableColumn fx:id="nameColumn" text="Mitglied" prefWidth="200"/>
-                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="180"/>
-                    <TableColumn fx:id="betragColumn" text="Betrag" prefWidth="100"/>
-                    <TableColumn fx:id="zeitraumColumn" text="Zeitraum" prefWidth="120"/>
-                    <TableColumn fx:id="faelligkeitColumn" text="Fälligkeitsdatum" prefWidth="140"/>
-                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="120"/>
+                    <TableColumn fx:id="nameColumn" text="Mitglied" prefWidth="180"/>
+                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="150"/>
+                    <TableColumn fx:id="betragColumn" text="Betrag" prefWidth="90"/>
+                    <TableColumn fx:id="zeitraumColumn" text="Zeitraum" prefWidth="110"/>
+                    <TableColumn fx:id="faelligkeitColumn" text="Fälligkeitsdatum" prefWidth="130"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="typColumn" text="Typ" prefWidth="100"/>
                     <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>

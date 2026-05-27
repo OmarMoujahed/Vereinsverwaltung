@@ -34,6 +34,7 @@ public class BeitraegeController {
     @FXML private TableColumn<Mitgliedsbeitrag, String> zeitraumColumn;
     @FXML private TableColumn<Mitgliedsbeitrag, String> faelligkeitColumn;
     @FXML private TableColumn<Mitgliedsbeitrag, String> statusColumn;
+    @FXML private TableColumn<Mitgliedsbeitrag, String> typColumn;
     @FXML private TableColumn<Mitgliedsbeitrag, String> aktionenColumn;
     @FXML private TextField sucheField;
     @FXML private ComboBox<Verein> vereinFilter;
@@ -73,6 +74,34 @@ public class BeitraegeController {
         statusColumn.setCellValueFactory(c -> new SimpleStringProperty(
                 c.getValue().getStatus() != null ? c.getValue().getStatus().toString() : "-"));
 
+        typColumn.setCellValueFactory(c -> new SimpleStringProperty(
+                c.getValue().getTyp() != null ? c.getValue().getTyp().toString() : "EINMALIG"));
+
+        typColumn.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    switch (item) {
+                        case "MONATLICH":
+                            setStyle("-fx-text-fill: -color-accent-emphasis; -fx-font-weight: bold;");
+                            break;
+                        case "JAEHRLICH":
+                            setStyle("-fx-text-fill: -color-success-emphasis; -fx-font-weight: bold;");
+                            break;
+                        case "EINMALIG":
+                        default:
+                            setStyle("-fx-text-fill: -color-fg-muted;");
+                            break;
+                    }
+                }
+            }
+        });
+
         aktionenColumn.setCellFactory(col -> new TableCell<>() {
             private final Button loeschenBtn = new Button("✕");
             private final Button bearbeitenBtn = new Button("✎");
@@ -109,7 +138,6 @@ public class BeitraegeController {
             });
             vereinFilter.valueProperty().addListener((obs, alt, neu) -> ladeBeitraege());
         } catch (Exception e) {
-            System.out.println("Fehler beim Laden der Vereine: " + e.getMessage());
         }
 
         statusFilter.setItems(FXCollections.observableArrayList("OFFEN", "BEZAHLT", "UEBERFAELLIG"));
@@ -149,7 +177,6 @@ public class BeitraegeController {
             beitraegeListe.setAll(beitraege);
             aktualisiereStatistiken(beitraege);
         } catch (Exception e) {
-            System.out.println("Fehler beim Laden der Beiträge: " + e.getMessage());
         }
     }
 
@@ -186,7 +213,6 @@ public class BeitraegeController {
             stage.showAndWait();
             ladeBeitraege();
         } catch (Exception e) {
-            System.out.println("Fehler: " + e.getMessage());
         }
     }
 
@@ -203,7 +229,6 @@ public class BeitraegeController {
             stage.showAndWait();
             ladeBeitraege();
         } catch (Exception e) {
-            System.out.println("Fehler: " + e.getMessage());
         }
     }
 
@@ -223,10 +248,28 @@ public class BeitraegeController {
                     HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
                     ladeBeitraege();
                 } catch (Exception e) {
-                    System.out.println("Fehler beim Löschen: " + e.getMessage());
                 }
             }
         });
+    }
+
+    @FXML
+    private void aktualisieren() {
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("http://localhost:8080/api/beitraege/wiederkehrende-generieren"))
+                    .POST(HttpRequest.BodyPublishers.noBody())
+                    .build();
+
+            HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+            Thread.sleep(300);
+
+            ladeBeitraege();
+
+        } catch (Exception e) {
+
+        }
     }
 
     @FXML public void zuHome() throws IOException { SceneManager.switchTo("dashboard.fxml"); }
