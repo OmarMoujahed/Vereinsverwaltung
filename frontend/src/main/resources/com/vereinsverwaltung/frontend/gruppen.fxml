@@ -55,9 +55,10 @@
             </HBox>
             <TableView fx:id="gruppenTabelle" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="nameColumn" text="Gruppenname" prefWidth="290"/>
-                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="290"/>
-                    <TableColumn fx:id="mitgliederColumn" text="Mitglieder" prefWidth="190"/>
+                    <TableColumn fx:id="nameColumn" text="Gruppenname" prefWidth="220"/>
+                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="220"/>
+                    <TableColumn fx:id="beschreibungColumn" text="Beschreibung" prefWidth="290"/>
+                    <TableColumn fx:id="mitgliederColumn" text="Mitglieder" prefWidth="130"/>
                     <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>

@@ -32,6 +32,7 @@ public class GruppenController {
     @FXML private TableColumn<Gruppe, String> aktionenColumn;
     @FXML private TextField sucheField;
     @FXML private ComboBox<Verein> vereinFilter;
+    @FXML private TableColumn<Gruppe, String> beschreibungColumn;
 
     private ObservableList<Gruppe> gruppenListe = FXCollections.observableArrayList();
 
@@ -43,6 +44,10 @@ public class GruppenController {
             Gruppe g = c.getValue();
             if (g.getVerein() == null) return new SimpleStringProperty("-");
             return new SimpleStringProperty(g.getVerein().getName());
+        });
+        beschreibungColumn.setCellValueFactory(c -> {
+            String beschreibung = c.getValue().getBeschreibung();
+            return new SimpleStringProperty(beschreibung != null ? beschreibung : "-");
         });
 
         mitgliederColumn.setCellValueFactory(c -> {

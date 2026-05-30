@@ -56,10 +56,13 @@
             </HBox>
             <TableView fx:id="veranstaltungenTabelle" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="bezeichnungColumn" text="Bezeichnung" prefWidth="245"/>
-                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="215"/>
-                    <TableColumn fx:id="datumColumn" text="Datum" prefWidth="145"/>
-                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="145"/>
+                    <TableColumn fx:id="bezeichnungColumn" text="Bezeichnung" prefWidth="160"/>
+                    <TableColumn fx:id="vereinColumn" text="Verein" prefWidth="140"/>
+                    <TableColumn fx:id="datumColumn" text="Datum" prefWidth="100"/>
+                    <TableColumn fx:id="ortColumn" text="Ort" prefWidth="130"/>
+                    <TableColumn fx:id="gruppeColumn" text="Gruppe" prefWidth="120"/>
+                    <TableColumn fx:id="beschreibungColumn" text="Beschreibung" prefWidth="160"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
                     <TableColumn fx:id="aktionenColumn" text="" prefWidth="90"/>
                 </columns>
             </TableView>

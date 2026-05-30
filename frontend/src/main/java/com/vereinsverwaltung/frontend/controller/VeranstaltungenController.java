@@ -35,6 +35,9 @@ public class VeranstaltungenController {
     @FXML private TextField sucheField;
     @FXML private ComboBox<Verein> vereinFilter;
     @FXML private ComboBox<String> statusFilter;
+    @FXML private TableColumn<Veranstaltung, String> ortColumn;
+    @FXML private TableColumn<Veranstaltung, String> gruppeColumn;
+    @FXML private TableColumn<Veranstaltung, String> beschreibungColumn;
 
     private ObservableList<Veranstaltung> veranstaltungenListe = FXCollections.observableArrayList();
 
@@ -58,6 +61,20 @@ public class VeranstaltungenController {
             Veranstaltung v = c.getValue();
             if (v.getStatus() == null) return new SimpleStringProperty("-");
             return new SimpleStringProperty(v.getStatus().toString());
+        });
+        ortColumn.setCellValueFactory(c -> {
+            String ort = c.getValue().getOrt();
+            return new SimpleStringProperty(ort != null ? ort : "-");
+        });
+
+        gruppeColumn.setCellValueFactory(c -> {
+            Veranstaltung v = c.getValue();
+            if (v.getGruppe() == null) return new SimpleStringProperty("-");
+            return new SimpleStringProperty(v.getGruppe().getName());
+        });
+        beschreibungColumn.setCellValueFactory(c -> {
+            String beschreibung = c.getValue().getBeschreibung();
+            return new SimpleStringProperty(beschreibung != null ? beschreibung : "-");
         });
 
         aktionenColumn.setCellFactory(col -> new TableCell<>() {

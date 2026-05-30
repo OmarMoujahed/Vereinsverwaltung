@@ -1,5 +1,9 @@
 package com.vereinsverwaltung.vereinsverwaltungback.entity;
 
+import com.vereinsverwaltung.vereinsverwaltungback.domain.BeitragsIntervallStrategie;
+import com.vereinsverwaltung.vereinsverwaltungback.domain.EinmaligIntervallStrategie;
+import com.vereinsverwaltung.vereinsverwaltungback.domain.JahrIntervallStrategie;
+import com.vereinsverwaltung.vereinsverwaltungback.domain.MonatIntervallStrategie;
 import com.vereinsverwaltung.vereinsverwaltungback.domain.Geldbetrag;
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -21,7 +25,6 @@ public class Mitgliedsbeitrag {
     @Enumerated(EnumType.STRING)
     private BeitragsTyp typ;
 
-
     @Enumerated(EnumType.STRING)
     private BeitragsStatus status;
 
@@ -29,10 +32,12 @@ public class Mitgliedsbeitrag {
     @JoinColumn(name = "ursprungs_beitrag_id")
     private Mitgliedsbeitrag ursprungsBeitrag;
 
-    //Beziehung zum Mitglied
     @ManyToOne
     @JoinColumn(name = "mitglied_id")
     private Mitglied mitglied;
+
+    @Transient
+    private BeitragsIntervallStrategie intervallStrategie;
 
     //Konstruktor
     public Mitgliedsbeitrag() {
@@ -62,16 +67,18 @@ public class Mitgliedsbeitrag {
     }
 
     public LocalDate berechneNaechstesFaelligkeitsdatum() {
-        LocalDate naechstesDatum = getFaelligkeitsdatum();
-
-        if (typ == BeitragsTyp.MONATLICH) {
-            naechstesDatum = naechstesDatum.plusMonths(1);
-        } else if (typ == BeitragsTyp.JAEHRLICH) {
-            naechstesDatum = naechstesDatum.plusYears(1);
+        if (intervallStrategie == null) {
+            intervallStrategie = erstelleStrategie();
         }
-
-        return naechstesDatum;
+        return intervallStrategie.berechneNaechstesFaelligkeitsdatum(getFaelligkeitsdatum());
     }
+
+    private BeitragsIntervallStrategie erstelleStrategie() {
+        if (typ == BeitragsTyp.MONATLICH) return new MonatIntervallStrategie();
+        if (typ == BeitragsTyp.JAEHRLICH) return new JahrIntervallStrategie();
+        return new EinmaligIntervallStrategie();
+    }
+
     //Getter und Setter
     public Long getId() {
         return id;

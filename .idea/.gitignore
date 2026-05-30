@@ -1,12 +1,36 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Ignored default folder with query files
-/queries/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-launcher/out/
-launcher/launcher.iml
+
+.idea/
+*.iml
+*.iws
+*.ipr
+
+target/
+out/
+*.class
+*.jar
+
+
+
+vereinsverwaltung.db-shm
+vereinsverwaltung.db-wal
+
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+
+.mvn/
+mvnw
+mvnw.cmd
+
+
+node_modules/
+npm-debug.log
+
+
+*.tmp
+*.log
