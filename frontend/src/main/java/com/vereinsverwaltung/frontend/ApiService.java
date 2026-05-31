@@ -26,10 +26,6 @@ public class ApiService {
         return getList("/vereine", new TypeToken<List<Verein>>(){}.getType());
     }
 
-    public static Verein vereinById(Long id) throws Exception {
-        return get("/vereine/" + id, Verein.class);
-    }
-
     public static List<Mitglied> alleMitglieder() throws Exception {
         return getList("/mitglieder", new TypeToken<List<Mitglied>>(){}.getType());
     }
@@ -38,9 +34,6 @@ public class ApiService {
         return getList("/mitglieder/verein/" + vereinId, new TypeToken<List<Mitglied>>(){}.getType());
     }
 
-    public static Mitglied mitgliedById(Long id) throws Exception {
-        return get("/mitglieder/" + id, Mitglied.class);
-    }
 
     public static List<Gruppe> alleGruppen() throws Exception {
         return getList("/gruppen", new TypeToken<List<Gruppe>>(){}.getType());
@@ -68,10 +61,6 @@ public class ApiService {
 
     public static List<Mitgliedsbeitrag> alleBeitraege() throws Exception {
         return getList("/beitraege", new TypeToken<List<Mitgliedsbeitrag>>(){}.getType());
-    }
-
-    public static List<Mitgliedsbeitrag> beitraegeVonMitglied(Long mitgliedId) throws Exception {
-        return getList("/beitraege/mitglied/" + mitgliedId, new TypeToken<List<Mitgliedsbeitrag>>(){}.getType());
     }
 
     public static List<Mitgliedsbeitrag> beitraegeNachStatus(String status) throws Exception {
